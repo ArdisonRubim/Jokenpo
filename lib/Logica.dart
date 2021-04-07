@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'dart:math';
 
 class Logica extends StatefulWidget {
   @override
@@ -7,6 +7,35 @@ class Logica extends StatefulWidget {
 }
 
 class _LogicaState extends State<Logica> {
+  
+  var _imagem = AssetImage("images/padrao.png");
+
+  void _comecandoJogo(String Opcao){
+
+    // Construir logica do app
+    var jogadas = ["pedra", "papel", "tesoura"];
+    var numbers = Random().nextInt(3);
+    var escolhaDoAplicativo = jogadas[numbers];
+
+    // Escolha do aplicativo
+    switch (escolhaDoAplicativo) {
+      case "pedra":
+        setState(() {
+          this._imagem = AssetImage("images/pedra.png");
+        });
+        break;
+      case "papel":
+        setState(() {
+          this._imagem = AssetImage("images/papel.png");
+        });
+        break;
+      case "tesoura":
+        setState(() {
+          this._imagem = AssetImage("images/tesoura.png");
+        });
+        break;
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +44,7 @@ class _LogicaState extends State<Logica> {
         backgroundColor: Colors.orangeAccent,
       ),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch, // Centraliza o conteudo
+        crossAxisAlignment: CrossAxisAlignment.center, // Centraliza o conteudo
         children: <Widget>[
           Padding(
             padding: EdgeInsets.only(top: 40, bottom: 15),
@@ -23,12 +52,48 @@ class _LogicaState extends State<Logica> {
               "Escolha do app",
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 30,
                 fontWeight: FontWeight.bold   // Cor do conteudo
               ),
             ),
           ),
-          Image.asset("images/padrao.png"),
+          // Imagem da variavel
+          Image(image: this._imagem,),
+          Padding(
+            padding: EdgeInsets.only(top: 40, bottom: 15),
+            child: Text(
+              "Escolha sua opção: ",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold   // Cor do conteudo
+              ),
+            ),
+          ),
+          //Criando linha para adcionar as 3 imagens
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Alinhamento da row
+            children: <Widget>[
+              // Papel
+              GestureDetector(
+                onTap: () => _comecandoJogo("papel"),
+                child: Image.asset("images/papel.png", height: 100,),
+              ),
+              // Tesoura
+              GestureDetector(
+                onTap: () => _comecandoJogo("tesoura"),
+                child: Image.asset("images/tesoura.png", height: 100,),
+              ),
+              // Pedra
+              GestureDetector(
+                onTap: () => _comecandoJogo("pedra"),
+                child: Image.asset("images/pedra.png", height: 100,),
+              ),
+              //Image.asset("images/papel.png"),
+              //Image.asset("images/tesoura.png"),
+              //Image.asset("images/pedra.png"),
+            ],
+          ),
         ],
       ),
       bottomNavigationBar: BottomAppBar( // Roda pe do app
