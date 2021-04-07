@@ -15,7 +15,7 @@ class _LogicaState extends State<Logica> {
         backgroundColor: Colors.orangeAccent,
       ),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch, // Centraliza o conteudo
+        crossAxisAlignment: CrossAxisAlignment.center, // Centraliza o conteudo
         children: <Widget>[
           Padding(
             padding: EdgeInsets.only(top: 40, bottom: 15),
@@ -23,12 +23,32 @@ class _LogicaState extends State<Logica> {
               "Escolha do app",
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 30,
                 fontWeight: FontWeight.bold   // Cor do conteudo
               ),
             ),
           ),
           Image.asset("images/padrao.png"),
+          Padding(
+            padding: EdgeInsets.only(top: 40, bottom: 15),
+            child: Text(
+              "Escolha sua opção: ",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold   // Cor do conteudo
+              ),
+            ),
+          ),
+          //Criando linha para adcionar as 3 imagens
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Alinhamento da row
+            children: <Widget>[
+              Image.asset("images/papel.png", height: 100),
+              Image.asset("images/tesoura.png", height: 100),
+              Image.asset("images/pedra.png", height: 100),
+            ],
+          ),
         ],
       ),
       bottomNavigationBar: BottomAppBar( // Roda pe do app
