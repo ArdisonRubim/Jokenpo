@@ -9,8 +9,9 @@ class Logica extends StatefulWidget {
 class _LogicaState extends State<Logica> {
   
   var _imagem = AssetImage("images/padrao.png");
+  var _mensagem = "Escolha sua opção: ";
 
-  void _comecandoJogo(String Opcao){
+  void _comecandoJogo(String opcaoUsuario){
 
     // Construir logica do app
     var jogadas = ["pedra", "papel", "tesoura"];
@@ -34,6 +35,37 @@ class _LogicaState extends State<Logica> {
           this._imagem = AssetImage("images/tesoura.png");
         });
         break;
+    }
+    // Validando ganhador
+
+    // Verificando usuario
+    if (
+        opcaoUsuario == "tesoura" && escolhaDoAplicativo == "papel"
+        ||
+        opcaoUsuario == "pedra" && escolhaDoAplicativo == "tesoura"
+        ||
+        opcaoUsuario == "papel" && escolhaDoAplicativo == "pedra"
+
+
+    ){
+      setState(() {
+        this._mensagem = "Você é o ganhador!!!!!";
+      });
+    }else if(  // Verificando App
+        escolhaDoAplicativo == "tesoura" && opcaoUsuario == "papel"
+        ||
+        escolhaDoAplicativo == "pedra" && opcaoUsuario == "tesoura"
+        ||
+        escolhaDoAplicativo == "papel" && opcaoUsuario == "pedra"
+    ){
+      setState(() {
+        this._mensagem = "O app é o ganhador!!!!!";
+      });
+    }else{  // Empate
+      setState(() {
+        this._mensagem = "Empateeee!!!!";
+      });
+
     }
   }
   @override
@@ -62,7 +94,7 @@ class _LogicaState extends State<Logica> {
           Padding(
             padding: EdgeInsets.only(top: 40, bottom: 15),
             child: Text(
-              "Escolha sua opção: ",
+              this._mensagem,
               textAlign: TextAlign.center,
               style: TextStyle(
                   fontSize: 20,
