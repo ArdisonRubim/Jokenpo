@@ -57,12 +57,8 @@ class _LogicaState extends State<Logica> {
               ),
             ),
           ),
-<<<<<<< HEAD
           // Imagem da variavel
           Image(image: this._imagem,),
-=======
-          Image.asset("images/padrao.png"),
->>>>>>> 07ce630f76d33d8a667fdbf0e1c9a63272abc674
           Padding(
             padding: EdgeInsets.only(top: 40, bottom: 15),
             child: Text(
@@ -78,7 +74,6 @@ class _LogicaState extends State<Logica> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Alinhamento da row
             children: <Widget>[
-<<<<<<< HEAD
               // Papel
               GestureDetector(
                 onTap: () => _comecandoJogo("papel"),
@@ -97,11 +92,6 @@ class _LogicaState extends State<Logica> {
               //Image.asset("images/papel.png"),
               //Image.asset("images/tesoura.png"),
               //Image.asset("images/pedra.png"),
-=======
-              Image.asset("images/papel.png", height: 100),
-              Image.asset("images/tesoura.png", height: 100),
-              Image.asset("images/pedra.png", height: 100),
->>>>>>> 07ce630f76d33d8a667fdbf0e1c9a63272abc674
             ],
           ),
         ],
